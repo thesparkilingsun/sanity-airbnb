@@ -2,10 +2,10 @@
 /node_modules
 *.md
 tsconfig.json
-next-env.d.ts
+
 next.config.js
 yarn.lock
-.editorconfug
+.editorconfgg
 .eslintrc.json
 **/*.eslint*
 .next
