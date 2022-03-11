@@ -31,7 +31,7 @@ export default {
 	],
 	preview: {
 		select: {
-			title: 'id',
+			title: 'name',
 			media: 'image',
 		},
 	},
