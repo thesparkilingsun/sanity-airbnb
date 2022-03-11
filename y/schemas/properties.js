@@ -68,6 +68,7 @@ export default {
                 source: 'propertyTitle',
                 maxLength: 100,
             },
+            codegen: { required: true },
         },
         {
             name: 'id',

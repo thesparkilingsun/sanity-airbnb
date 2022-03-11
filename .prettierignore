@@ -16,3 +16,6 @@ yarn.lock
 **/yarn.lock
 **/config
 /public
+*.env.*
+**/.env*
+*.env

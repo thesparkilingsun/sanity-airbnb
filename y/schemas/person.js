@@ -17,6 +17,7 @@ export default {
                 source: 'name',
                 maxLength: 100,
             },
+            codegen: { required: true },
         },
         {
             name: 'id',
