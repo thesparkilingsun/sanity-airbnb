@@ -6,7 +6,7 @@ const tk = '';
 const config = {
     projectId: sanityId,
     dataset: dtSet,
-    previewMode: preview,
+    previewMode: true,
     token: tk,
 };
 export default config;

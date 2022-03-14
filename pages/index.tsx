@@ -1,11 +1,12 @@
 import type { GetStaticPropsContext, NextPage } from 'next';
 import { getDataHooksProps } from 'next-data-hooks';
-import Disco from '../component/display';
+import DisplayProperty from '../component/property1';
+import Property2 from '../component/property2';
 
 
 const Home: NextPage = (props) => {
     
-    return (<Disco/>);
+    return (<div><DisplayProperty/> <Property2 /></div>);
     
 };
 
@@ -14,7 +15,8 @@ const Home: NextPage = (props) => {
 export async function getStaticProps(context : GetStaticPropsContext) {
     const dataHooksProps = await getDataHooksProps({
         context,
-        dataHooks : Disco.dataHooks
+        dataHooks : Property2.dataHooks
+        
     })
 
     return{
@@ -24,6 +26,5 @@ export async function getStaticProps(context : GetStaticPropsContext) {
 
 export default Home;
 
-//Static Props can only be accessed in pages Directly
-// It cannot be aacees
+
 
