@@ -1,10 +1,16 @@
 import { GetServerSidePropsContext } from "next";
 import sanityClient from "../../sanityClient/sanityClient";
 import styled from 'styled-components';
+import { isMultiple } from "../../utils/isMultiple";
+import { type } from "os";
+import Maps from "../../component/maps";
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div.attrs(props =>({
+    type:"text",
+    url: props.url || "#fff"
+}))`
     border: 1px solid black;
-    background-image: url(${prop => prop.url ?? '#fff'});
+    background-image: url(${ props => (props.url !='' ? props.url :'#fff')});
     height: 100vw;
     z-index: -1;
     background-position: top;
@@ -14,17 +20,29 @@ const ImageContainer = styled.div`
 
 `
 
-export default function Property({owner,ownerImageUrl,property}:Props){
-    console.log(property)
+export default function Property(props:Props){
+    if(props === undefined){
+        return (<h1>Props does not exist</h1>)
+    }
     
-    const source:string = ownerImageUrl;
+        const property = {...props?.property}
+        const owner = {...props?.owner}; 
+        const source:string = props?.ownerImageUrl ?? '';
+
+        const{propertyTitle,bedrooms,beds,propertyType,pricePerNight,description,location} = property
+        const{name} = owner;
+       
+        
     return(
         <div>
-            <ImageContainer url={ownerImageUrl}>
-            <h1>{owner}</h1>
-                Hello
-            <h2>{property.title}</h2>
-            </ImageContainer>
+            <ImageContainer url={source} ></ImageContainer>
+            <h1><b>{propertyTitle}</b></h1>
+            <h2>{propertyType}</h2>
+            <h3>bedroom{isMultiple(bedrooms )} {bedrooms} * {beds} bed{isMultiple(beds)}</h3>
+            <h4>Price per Night{pricePerNight}</h4>
+            <h4>Description: {description}</h4>
+             <Maps props={location}/>
+
         </div>
     )
 }
